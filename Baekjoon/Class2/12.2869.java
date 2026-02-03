@@ -9,7 +9,6 @@ class Main {
     public static void main(String[] args) throws IOException {
         long a, b, v;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         a = Integer.parseInt(st.nextToken());
