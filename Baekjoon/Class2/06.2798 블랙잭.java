@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.ArrayList;
 
 class Main {
     public static void main(String[] args) throws IOException {
         int n, m, closest = 0;
-        Vector<Integer> nums = new Vector<>();
+        ArrayList<Integer> nums = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
