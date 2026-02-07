@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-bool asc_yx(pair<int, int> c1, pair<int, int> c2) {
+bool asc_yx(const pair<int, int>& c1, const pair<int, int>& c2) {
     if (c1.second != c2.second)
         return c1.second < c2.second;
     else

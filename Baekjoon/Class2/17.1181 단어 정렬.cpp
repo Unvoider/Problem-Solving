@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-bool dict_sort(string& s1, string& s2) {
+bool dict_sort(const string& s1, const string& s2) {
     if (s1.length() != s2.length()) // 길이순 정렬
         return s1.length() < s2.length();
     return s1 < s2; // 문자순 정렬

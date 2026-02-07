@@ -9,7 +9,7 @@ struct Person {
     string name;
 };
 
-bool asc_age(Person p1, Person p2) {
+bool asc_age(const Person& p1, const Person& p2) {
     return p1.age < p2.age;
 }
 
