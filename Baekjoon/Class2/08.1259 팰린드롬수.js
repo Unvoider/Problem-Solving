@@ -1,7 +1,7 @@
 const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = require("fs").readFileSync(inputFile, "utf8").split("\n");
 
-function isPalindrome(str) {
+const isPalindrome = (str) => {
     const len = str.length;
     for(let i = 0; i < len / 2; i++) // 절반까지 비교
         if (str.charAt(i) !== str.charAt(len - 1 - i)) return false;
