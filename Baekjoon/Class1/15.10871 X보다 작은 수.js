@@ -9,9 +9,9 @@ console.log(out);
 /*
 const [_, x] = input[0].split(" ").map(Number);
 const a = input[1].split(" ").map(Number);
-let out = "";
+const out = [];
 for(const num of a)
     if(num < x)
-        out += num + " ";
-console.log(out);
+        out.push(num);
+console.log(out.join(" "));
 */

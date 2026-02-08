@@ -3,16 +3,16 @@ const input = require("fs").readFileSync(inputFile, "utf8").trim().split("\n");
 
 const nSet = new Set(input[1].split(" ").map(Number));
 const mArr = input[3].split(" ").map(Number);
-let out = "";
+const out = [];
 
 for(const mNum of mArr) {
     // Set는 해시 테이블을 사용하므로 has()에 대해 O(1)
     if(nSet.has(mNum))
-        out += "1\n";
+        out.push("1");
     else
-        out += "0\n";
+        out.push("0");
 }
-console.log(out);
+console.log(out.join("\n"));
 
 /* 이진 탐색 구현
 const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
@@ -34,14 +34,14 @@ const binSearch = (arr, num) => {
 
 const nArr = input[1].split(" ").map(Number).sort((a, b) => a - b); // 정렬
 const mArr = input[3].split(" ").map(Number);
-let out = "";
+const out = [];
 
 for(const mNum of mArr) {
     // 이진 탐색 O(logn)
     if(binSearch(nArr, mNum) > -1)
-        out += "1\n";
+        out.push("1");
     else
-        out += "0\n";
+        out.push("0");
 }
-console.log(out);
+console.log(out.join("\n"));
 */

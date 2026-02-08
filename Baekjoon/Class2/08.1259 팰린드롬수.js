@@ -9,14 +9,14 @@ const isPalindrome = (str) => {
 }
 
 let cursor = 0;
-let out = "";
+const out = [];
 while(true) {
     const str = input[cursor++].trim();
     if(str === "0") break;
     // if(str === str.split("").reverse().join(""))
     if(isPalindrome(str))
-        out += "yes\n";
+        out.push("yes");
     else
-        out += "no\n";
+        out.push("no");
 }
-console.log(out)
+console.log(out.join("\n"))

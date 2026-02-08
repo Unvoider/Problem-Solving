@@ -7,7 +7,6 @@ const dictSort = (a, b) => {
     return a < b ? -1 : 1 // 문자순 정렬
 }
 
-let out = "";
 const words = [...new Set(input.slice(1))]; // 중복 제거
 words.sort(dictSort); // 정렬
 console.log(words.join("\n"));

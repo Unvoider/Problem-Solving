@@ -3,7 +3,7 @@ const input = require("fs").readFileSync(inputFile, "utf8").trim().split(/\s+/);
 
 let cursor = 0;
 const n = input[cursor++];
-let out = "";
+const out = [];
 for(let i = 0; i < n; i++) {
     let score = 0, total = 0;
     const str = input[cursor++];
@@ -11,6 +11,6 @@ for(let i = 0; i < n; i++) {
         if(ch === "O")
             total += ++score;
         else score = 0
-    out += total + "\n";
+    out.push(total);
 }
-console.log(out);
+console.log(out.join("\n"));
