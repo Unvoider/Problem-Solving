@@ -1,7 +1,7 @@
+// 에라토스테네스의 체 O(NloglogN)
 const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = require("fs").readFileSync(inputFile, "utf8").trim().split(/\s+/);
 
-// 에라토스테네스의 체 O(NloglogN)
 const getSieve = (max) => {
     const isPrime = new Array(max + 1).fill(true);
     isPrime[0] = isPrime[1] = false;

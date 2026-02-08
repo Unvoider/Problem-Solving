@@ -1,7 +1,7 @@
+// 유클리트 호제법
 const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = require("fs").readFileSync(inputFile, "utf8").trim();
 
-// 유클리트 호제법
 const gcd = (a, b) => { // greatest common divisor
     while(b)
         [a, b] = [b, a % b];

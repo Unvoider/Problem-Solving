@@ -1,8 +1,8 @@
+// 에라토스테네스의 체 O(NloglogN)
 import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-// 에라토스테네스의 체 O(NloglogN)
 class Sieve {
     private boolean[] isPrime;
 

@@ -1,7 +1,7 @@
+#에라토스테네스의 체 O(NloglogN)
 import sys
 input = sys.stdin.readline
 
-#에라토스테네스의 체 O(NloglogN)
 def get_sieve(max):
     is_prime = [True] * (max + 1)
     is_prime[0] = is_prime[1] = False

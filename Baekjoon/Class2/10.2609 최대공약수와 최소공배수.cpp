@@ -1,7 +1,7 @@
-﻿#include <iostream>
+﻿// 유클리트 호제법
+#include <iostream>
 using namespace std;
 
-// 유클리트 호제법
 int gcd(int a, int b) { // greatest common divisor
     int r = -1;
     while (r) {

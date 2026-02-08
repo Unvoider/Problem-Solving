@@ -1,7 +1,7 @@
+#유클리트 호제법
 import sys
 input = sys.stdin.readline
 
-#유클리트 호제법
 def gcd(a, b): #greatest common divisor
     while b != 0:
         a, b = b, a % b

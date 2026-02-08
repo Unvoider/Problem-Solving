@@ -1,8 +1,8 @@
+// 유클리트 호제법
 import java.io.*;
 import java.util.StringTokenizer;
 
 class Main {
-    // 유클리트 호제법
     private static int gcd(int a, int b) { // greatest common divisor
         int r = -1;
         while(r != 0) {

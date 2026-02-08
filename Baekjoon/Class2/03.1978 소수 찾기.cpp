@@ -1,9 +1,9 @@
-﻿#include <iostream>
+﻿// 에라토스테네스의 체 O(NloglogN)
+#include <iostream>
 #include <array>
 using namespace std;
 constexpr int MAX_ARRAY = 1001;
 
-// 에라토스테네스의 체 O(NloglogN)
 struct Sieve {
     array<bool, MAX_ARRAY> is_prime;
     Sieve() {
