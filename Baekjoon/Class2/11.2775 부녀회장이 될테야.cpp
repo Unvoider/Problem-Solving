@@ -1,7 +1,7 @@
-﻿#include <iostream>
+﻿// 반복 동적 프로그래밍
+#include <iostream>
 using namespace std;
 
-// 반복 동적 프로그래밍
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
