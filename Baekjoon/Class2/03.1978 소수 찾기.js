@@ -12,7 +12,6 @@ const getSieve = (max) => {
     return isPrime;
 }
 
-let cursor = 0;
 const [_, ...nums] = input.map(Number);
 let primeCount = 0;
 let isPrime = getSieve(1000);
@@ -34,7 +33,6 @@ function isPrime(num) {
     return 1;
 }
 
-let cursor = 0;
 const [_, ...nums] = input.map(Number);
 let primeCount = 0;
 for(let num of nums)

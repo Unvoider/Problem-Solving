@@ -5,7 +5,7 @@ const input = require("fs").readFileSync(inputFile, "utf8").trim().split("\n").m
 let cursor = 0;
 const t = input[cursor++];
 const apt = Array.from({ length: 15 }, () => new Array(15)); // 타뷸레이션
-let out = "";
+const out = [];
 
 for(let i = 0; i < 15; i++) {
     apt[0][i] = i + 1; // 0층 초기화
@@ -18,9 +18,9 @@ for(let i = 1; i < 15; i++) // 전체 계산
 for(let _ = 0; _ < t; _++) {
     const k = input[cursor++];
     const n = input[cursor++];
-    out += `${apt[k][n - 1]}\n`;
+    out.push(apt[k][n - 1]);
 }
-console.log(out);
+console.log(out.join("\n"));
 
 /* 재귀 동적 프로그래밍
 const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
@@ -49,12 +49,12 @@ const countPeople = (floor, room) => {
 
 let cursor = 0;
 const t = input[cursor++];
-let out = "";
+const out = [];
 
 for(let _ = 0; _ < t; _++) {
     const k = input[cursor++];
     const n = input[cursor++];
-    out += `${countPeople(k, n)}\n`;
+    out.push(countPeople(k, n));
 }
-console.log(out);
+console.log(out.join("\n"));
 */

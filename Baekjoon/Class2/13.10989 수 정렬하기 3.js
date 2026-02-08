@@ -7,12 +7,12 @@ const NUM_RANGE = 10001;
 let cursor = 0;
 const n = Number(input[cursor++]);
 const numCounts = new Array(NUM_RANGE).fill(0);
-let out = "";
+const out = [];
 for(let _ = 0; _ < n; _++) { // 계수 정렬
     const num = Number(input[cursor++]);
     numCounts[num]++;
 }
 for(let i = 1; i < NUM_RANGE; i++) // 출력
     for(let _ = 0; _ < numCounts[i]; _++)
-        out += i + "\n";
-console.log(out);
+        out.push(i);
+console.log(out.join("\n"));

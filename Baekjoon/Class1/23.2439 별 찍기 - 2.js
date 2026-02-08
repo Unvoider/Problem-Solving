@@ -2,7 +2,7 @@ const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = require("fs").readFileSync(inputFile, "utf8").trim();
 
 const n = Number(input);
-let out = "";
+const out = [];
 for(let i = 1; i <= n; i++)
-    out += " ".repeat(n - i) + "*".repeat(i) + "\n";
-console.log(out);
+    out.push(" ".repeat(n - i) + "*".repeat(i));
+console.log(out.join("\n"));
