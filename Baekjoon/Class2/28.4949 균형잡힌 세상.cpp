@@ -8,7 +8,7 @@ bool balanced_world(const string& str) {
     for (char ch : str)
         if (ch == '(' || ch == '[') // 왼쪽 괄호 push
             brackets.push(ch);
-        else if (ch == ')' || ch == ']') { // 오른쪽 괄호 확인 후 pop
+        else if (ch == ')' || ch == ']') { // 오른쪽 괄호 pop
             if (brackets.empty()) return false; // 스택 빔
             char top = brackets.top();
             if (top != '(' && ch == ')') // 괄호 짝 안 맞음
