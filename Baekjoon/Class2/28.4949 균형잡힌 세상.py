@@ -1,4 +1,3 @@
-from collections import deque
 import sys
 input = sys.stdin.readline
 write = sys.stdout.write
@@ -6,7 +5,7 @@ write = sys.stdout.write
 PAIRS = {")": "(", "]": "["}
 
 def balanced_world(string):
-    brackets = deque()
+    brackets = []
     for ch in string:
         if ch in "([": #왼쪽 괄호 push
             brackets.append(ch)
