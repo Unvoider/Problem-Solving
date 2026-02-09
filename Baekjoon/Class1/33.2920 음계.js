@@ -1,12 +1,11 @@
 const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = require("fs").readFileSync(inputFile, "utf8").trim();
 
-let cursor = 0;
 const notes = input.split(" ").map(Number);
 let isAscending = true, isDescending = true;
-let prev = notes[cursor++];
-for(; cursor < notes.length; cursor++) {
-    const cur = notes[cursor];
+let prev = notes[0];
+for(let i = 1; i < notes.length; i++) {
+    const cur = notes[i];
     if(prev >= cur) isAscending = false;
     if(prev <= cur) isDescending = false;
     prev = cur;

@@ -1,10 +1,9 @@
 const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = require("fs").readFileSync(inputFile, "utf8").trim().split("\n");
 
-let cursor = 0;
-const n = Number(input[cursor++]);
-const tCounts = input[cursor++].split(" ").map(Number);
-const [tBundle, pBundle] = input[cursor++].split(" ").map(Number);
+const n = Number(input[0]);
+const tCounts = input[1].split(" ").map(Number);
+const [tBundle, pBundle] = input[2].split(" ").map(Number);
 
 // 티셔츠 묶음
 let t = 0;
