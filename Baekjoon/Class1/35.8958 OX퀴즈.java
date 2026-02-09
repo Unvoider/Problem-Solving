@@ -16,7 +16,7 @@ class Main {
                 else score = 0;
             sb.append(total).append('\n');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

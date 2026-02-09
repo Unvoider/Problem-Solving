@@ -29,7 +29,7 @@ class Main {
         pRest = n % pBundle;
 
         sb.append(t).append('\n').append(p).append(' ').append(pRest);
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

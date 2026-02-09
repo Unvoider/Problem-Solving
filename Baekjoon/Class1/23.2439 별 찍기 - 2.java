@@ -13,7 +13,7 @@ class Main{
                 sb.append('*');
             sb.append('\n');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

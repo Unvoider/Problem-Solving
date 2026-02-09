@@ -17,7 +17,7 @@ class Main{
             x = (n - 1) / h + 1;
             sb.append(y * 100 + x).append('\n');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

@@ -28,7 +28,7 @@ class Main {
                 sb.append("0\n");
         }
 
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }
@@ -78,7 +78,7 @@ class Main {
                 sb.append("0\n");
         }
 
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }
@@ -113,7 +113,7 @@ class Main {
                 sb.append("0\n");
         }
 
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

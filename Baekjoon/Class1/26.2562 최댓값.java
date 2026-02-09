@@ -14,7 +14,7 @@ class Main{
         }
         sb.append(max).append('\n');
         sb.append(maxIndex).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

@@ -15,7 +15,7 @@ class Main {
         Arrays.sort(nums);
         for(int num: nums)
             sb.append(num).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

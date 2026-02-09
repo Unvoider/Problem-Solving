@@ -21,7 +21,7 @@ class Main {
             else
                 sb.append("wrong\n");
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }
@@ -47,7 +47,7 @@ class Main {
             else
                 sb.append("wrong\n");
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

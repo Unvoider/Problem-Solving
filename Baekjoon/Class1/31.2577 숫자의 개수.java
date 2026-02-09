@@ -17,7 +17,7 @@ class Main{
         }
         for(int i = 0; i < 10; i++)
             sb.append(count[i]).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

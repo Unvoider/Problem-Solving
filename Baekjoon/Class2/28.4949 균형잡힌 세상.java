@@ -27,7 +27,7 @@ class Main {
         while(!(str = br.readLine()).equals("."))
             if(balancedWorld(str)) sb.append("yes\n");
             else sb.append("no\n");
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

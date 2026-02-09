@@ -35,7 +35,7 @@ class Main {
         Arrays.sort(coords);
         for(Coordinate coord: coords)
             sb.append(coord.x).append(' ').append(coord.y).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }
@@ -75,7 +75,7 @@ class Main {
         });
         for(Coordinate coord: coords)
             sb.append(coord.x).append(' ').append(coord.y).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

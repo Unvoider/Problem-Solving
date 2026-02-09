@@ -18,7 +18,7 @@ class Main {
         }
         for(int i = 0; i < CHAR_RANGE; i++)
             sb.append(firstAppearance[i]).append(' ');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

@@ -14,7 +14,7 @@ class Main{
             if(a == 0 && b == 0) break;
             sb.append(a + b).append('\n');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

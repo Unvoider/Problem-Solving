@@ -22,7 +22,7 @@ class Main {
             n = Integer.parseInt(br.readLine());
             sb.append(apt[k][n - 1]).append('\n');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }
@@ -64,7 +64,7 @@ class Main {
             n = Integer.parseInt(br.readLine());
             sb.append(countPeople(k, n)).append('\n');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

@@ -16,7 +16,7 @@ class Main {
         for(int i = 1; i < NUM_RANGE; i++) // 출력
             for(int j = 0; j < numCounts[i]; j++)
                 sb.append(i).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

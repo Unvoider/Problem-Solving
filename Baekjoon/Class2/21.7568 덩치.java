@@ -35,7 +35,7 @@ class Main {
             }
             sb.append(rank).append(' ');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

@@ -29,7 +29,7 @@ class Main {
         Arrays.sort(people, (p1, p2) -> p1.age - p2.age);
         for(Person person: people)
             sb.append(person.age).append(' ').append(person.name).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

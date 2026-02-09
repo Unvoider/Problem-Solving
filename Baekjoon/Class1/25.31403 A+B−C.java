@@ -10,7 +10,7 @@ class Main{
         c = Integer.parseInt(br.readLine());
         sb.append(a + b - c).append('\n');
         sb.append(Integer.parseInt(String.valueOf(a) + String.valueOf(b)) - c).append('\n');
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

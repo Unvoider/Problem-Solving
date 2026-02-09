@@ -15,7 +15,7 @@ class Main{
             if(input < x)
                 sb.append(input).append(' ');
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }

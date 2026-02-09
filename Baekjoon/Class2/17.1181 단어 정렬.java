@@ -25,7 +25,7 @@ class Main {
             sb.append(word).append('\n');
             prevWord = word;
         }
-        System.out.print(sb.toString());
+        System.out.print(sb);
         br.close();
     }
 }
