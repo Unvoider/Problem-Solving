@@ -21,7 +21,7 @@ const input = require("fs").readFileSync(inputFile, "utf8").trim().split("\n");
 const binSearch = (arr, target) => {
     let left = 0, right = arr.length - 1;
     while (left <= right) {
-        let middle = Math.trunc((left + right) / 2);
+        const middle = Math.trunc((left + right) / 2);
         switch(Math.sign(arr[middle] - target)) {
             case 0: return middle;
             case -1: left = middle + 1;
