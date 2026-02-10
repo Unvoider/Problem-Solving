@@ -32,11 +32,11 @@ int main() {
 #define COMPARE(x, y) (x) < (y) ? -1 : (x) == (y) ? 0 : 1
 using namespace std;
 
-int bin_search(const vector<long long>& vec, long long num) {
+int bin_search(const vector<long long>& vec, long long target) {
     int left = 0, right = vec.size() - 1;
     while (left <= right) {
         int middle = (left + right) / 2;
-        switch (COMPARE(vec[middle], num)) {
+        switch (COMPARE(vec[middle], target)) {
         case 0: return middle;
         case -1: left = middle + 1;
             break;

@@ -3,9 +3,9 @@ import sys
 input = sys.stdin.readline
 write = sys.stdout.write
 
-def bin_search(li, num):
-    left_insert = bisect.bisect_left(li, num)
-    if left_insert < len(li) and li[left_insert] == num:
+def bin_search(li, target):
+    left_insert = bisect.bisect_left(li, target)
+    if left_insert < len(li) and li[left_insert] == target:
         return True
     return False
 
@@ -29,14 +29,14 @@ import sys
 input = sys.stdin.readline
 write = sys.stdout.write
 
-def bin_search(li, num):
+def bin_search(li, target):
     left = 0
     right = len(li) - 1
     while left <= right:
         middle = (left + right) // 2
-        if li[middle] == num:
+        if li[middle] == target:
             return middle
-        elif li[middle] < num:
+        elif li[middle] < target:
             left = middle + 1
         else:
             right = middle - 1

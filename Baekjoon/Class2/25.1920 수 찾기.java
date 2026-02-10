@@ -39,11 +39,11 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 class Main {
-    private static int binSearch(long[] arr, int num) {
+    private static int binSearch(long[] arr, long target) {
         int left = 0, right = arr.length - 1;
         while(left <= right) {
             int middle = (left + right) / 2;
-            switch(Integer.compare(left, right)) {
+            switch(Long.compare(arr[middle], target)) {
                 case 0: return middle;
                 case -1: left = middle + 1;
                     break;
