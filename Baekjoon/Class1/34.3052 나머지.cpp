@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿// 카운팅
+#include <iostream>
 #include <array>
 using namespace std;
 constexpr int INPUT_COUNT = 10;
@@ -22,9 +23,9 @@ int main() {
     return 0;
 }
 
-/* set 사용
+/* unordered_set 사용
 #include <iostream>
-#include <set>
+#include <unordered_set>
 using namespace std;
 constexpr int INPUT_COUNT = 10;
 constexpr int DIVISOR = 42;
@@ -33,7 +34,7 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    set<int> num_set;
+    unordered_set<int> num_set;
     int num;
 
     for (int _ = 0; _ < INPUT_COUNT; _++) {
@@ -46,7 +47,7 @@ int main() {
 }
 */
 
-/* int 배열 사용
+/* 브루트포스
 #include <iostream>
 #include <array>
 using namespace std;
