@@ -6,7 +6,7 @@ int main(void) {
 	cin.tie(NULL);
 
 	int a, b, c, product, remainder;
-	int count[10] = { 0, };
+	int count[10] = { 0 };
 	cin >> a >> b >> c;
 	product = a * b * c;
 	while (product != 0) {
