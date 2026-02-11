@@ -19,17 +19,17 @@ class Main {
             top = null;
             size = 0;
         }
-        public void push(T item) {
+        public void push(T data) {
             size++;
-            Node<T> nodeToPush = new Node<T>(item, top);
+            Node<T> nodeToPush = new Node<T>(data, top);
             top = nodeToPush;
         }
         public T pop() {
             if (empty()) throw new EmptyStackException();
             size--;
-            T item = top.data;
+            T data = top.data;
             top = top.next;
-            return item;
+            return data;
         }
         public int size() {
             return size;

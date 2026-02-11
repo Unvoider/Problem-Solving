@@ -10,16 +10,16 @@ class Stack: #연결 리스트 스택
     def __init__(self):
         self._top = None #첫 노드
         self._size = 0
-    def push(self, item):
+    def push(self, data):
         self._size += 1
-        node_to_push = self.Node(item, self._top)
+        node_to_push = self.Node(data, self._top)
         self._top = node_to_push
     def pop(self):
         if self.empty(): raise IndexError("stack is empty")
         self._size -= 1
-        item = self._top.data
+        data = self._top.data
         self._top = self._top.next
-        return item
+        return data
     def size(self):
         return self._size
     def empty(self):

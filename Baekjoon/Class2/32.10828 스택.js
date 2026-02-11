@@ -14,17 +14,17 @@ class Stack { // 연결 리스트 스택
         this.#top = null;
         this.#size = 0;
     }
-    push(item) {
+    push(data) {
         this.#size++;
-        const nodeToPush = new Stack.Node(item, this.#top);
+        const nodeToPush = new Stack.Node(data, this.#top);
         this.#top = nodeToPush;
     }
     pop() {
         if (this.empty) return undefined;
         this.#size--;
-        const item = this.#top.data;
+        const data = this.#top.data;
         this.#top = this.#top.next;
-        return item;
+        return data;
     }
     get size() {
         return this.#size;

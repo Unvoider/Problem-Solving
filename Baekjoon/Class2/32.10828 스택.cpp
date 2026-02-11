@@ -17,21 +17,21 @@ public:
         while (!empty())
             pop();
     }
-    void push(const T& item) {
+    void push(const T& data) {
         _size++;
         Node* node_to_push = new Node;
-        node_to_push->data = item;
+        node_to_push->data = data;
         node_to_push->next = _top;
         _top = node_to_push;
     }
     T pop() {
-        if (empty()) throw runtime_error("stack is empty");
+        if (empty()) throw out_of_range("stack is empty");
         _size--;
         Node* node_to_pop = _top;
-        T item = node_to_pop->data;
+        T data = node_to_pop->data;
         _top = node_to_pop->next;
         delete node_to_pop;
-        return item;
+        return data;
     }
     int size() {
         return _size;
@@ -40,7 +40,7 @@ public:
         return _size == 0;
     }
     T top() {
-        if (empty()) throw runtime_error("stack is empty");
+        if (empty()) throw out_of_range("stack is empty");
         return _top->data;
     }
 };
@@ -71,7 +71,7 @@ int main() {
             else if (command == "top")
                 cout << nums.top() << '\n';
         }
-        catch (const runtime_error& e) { // 스택 빔
+        catch (const out_of_range& e) { // 스택 빔
             cout << -1 << '\n';
         }
     }
