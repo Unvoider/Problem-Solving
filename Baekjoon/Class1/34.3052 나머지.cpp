@@ -1,6 +1,7 @@
 ﻿// 카운팅
 #include <iostream>
 #include <array>
+#include <algorithm>
 using namespace std;
 constexpr int INPUT_COUNT = 10;
 constexpr int DIVISOR = 42;
@@ -9,17 +10,14 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int num, diff_count = 0;
+    int num;
     array<bool, DIVISOR> has_nums = { false };
 
     for (int _ = 0; _ < INPUT_COUNT; _++) {
         cin >> num;
         has_nums[num % DIVISOR] = true;
     }
-    for (int i = 0; i < DIVISOR; i++)
-        if (has_nums[i]) diff_count++;
-
-    cout << diff_count;
+    cout << count(has_nums.begin(), has_nums.end(), true); // 서로 다른 나머지 세기
     return 0;
 }
 
