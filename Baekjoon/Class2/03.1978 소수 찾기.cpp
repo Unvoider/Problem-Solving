@@ -1,17 +1,16 @@
 ﻿// 에라토스테네스의 체 O(NloglogN)
 #include <iostream>
-#include <array>
+#include <vector>
 using namespace std;
-constexpr int MAX_ARRAY = 1001;
 
 struct Sieve {
-    array<bool, MAX_ARRAY> is_prime;
-    Sieve() {
-        is_prime.fill(true);
+    vector<char> is_prime;
+    Sieve(int max) {
+        is_prime = vector<char>(max + 1, true);
         is_prime[0] = is_prime[1] = false;
-        for (int i = 2; i * i < MAX_ARRAY; i++) // 2부터 sqrt(1001) 전까지 소수 찾기
+        for (int i = 2; i * i <= max; i++) // 2부터 sqrt(max)까지 소수 찾기
             if (is_prime[i])
-                for (int j = i * i; j < MAX_ARRAY; j += i) // 소수면 제곱부터 배수를 지우기
+                for (int j = i * i; j <= max; j += i) // 소수면 제곱부터 배수를 지우기
                     is_prime[j] = false;
     }
 };
@@ -21,7 +20,7 @@ int main() {
     cin.tie(NULL);
 
     int n, num, prime_count = 0;
-    Sieve sieve;
+    Sieve sieve(1000);
     cin >> n;
     while (n--) {
         cin >> num;

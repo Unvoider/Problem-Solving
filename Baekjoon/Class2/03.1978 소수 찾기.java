@@ -10,7 +10,7 @@ class Sieve {
         isPrime = new boolean[max + 1];
         Arrays.fill(isPrime, true);
         isPrime[0] = isPrime[1] = false;
-        for(int i = 2; i * i <= max; i++) // 2부터 sqrt(1000)까지 소수 찾기
+        for(int i = 2; i * i <= max; i++) // 2부터 sqrt(max)까지 소수 찾기
             if(isPrime[i])
                 for(int j = i * i; j <= max; j += i) // 소수면 제곱부터 배수를 지우기
                     isPrime[j] = false;

@@ -5,7 +5,7 @@ input = sys.stdin.readline
 def get_sieve(max):
     is_prime = [True] * (max + 1)
     is_prime[0] = is_prime[1] = False
-    for i in range(2, int(max ** 0.5) + 1): #2부터 sqrt(1000)까지 소수 찾기
+    for i in range(2, int(max ** 0.5) + 1): #2부터 sqrt(max)까지 소수 찾기
         if is_prime[i]:
             for j in range(i * i, max + 1, i): #소수면 제곱부터 배수를 지우기
                 is_prime[j] = False
