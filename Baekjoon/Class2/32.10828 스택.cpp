@@ -33,13 +33,13 @@ public:
         delete node_to_pop;
         return data;
     }
-    int size() {
+    int size() const {
         return _size;
     }
-    bool empty() {
+    bool empty() const {
         return _size == 0;
     }
-    T top() {
+    T top() const {
         if (empty()) throw out_of_range("stack is empty");
         return _top->data;
     }

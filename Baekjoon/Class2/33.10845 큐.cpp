@@ -40,17 +40,17 @@ public:
         if (!_front) _back = nullptr;
         return data;
     }
-    int size() {
+    int size() const {
         return _size;
     }
-    bool empty() {
+    bool empty() const {
         return _size == 0;
     }
-    T front() {
+    T front() const {
         if (empty()) throw out_of_range("queue is empty");
         return _front->data;
     }
-    T back() {
+    T back() const {
         if (empty()) throw out_of_range("queue is empty");
         return _back->data;
     }
