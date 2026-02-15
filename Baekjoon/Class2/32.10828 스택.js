@@ -82,7 +82,6 @@ const out = [];
 for(let i = 1; i <= n; i++) {
     const line = input[i].split(" ");
     const command = line[0].trim();
-    let num;
     switch(command) {
         case "push":
             nums.push(Number(line[1]));
