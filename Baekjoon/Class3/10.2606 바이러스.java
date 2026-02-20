@@ -17,7 +17,7 @@ class Main {
         linkN = Integer.parseInt(br.readLine());
 
         graph = new ArrayList[pcN + 1]; // 무방향성 그래프
-        for(int i = 0; i <= pcN; i++)
+        for(int i = 1; i <= pcN; i++)
             graph[i] = new ArrayList<>();
         for(int i = 0; i < linkN; i++) {
             st = new StringTokenizer(br.readLine());
@@ -72,7 +72,7 @@ class Main {
         linkN = Integer.parseInt(br.readLine());
 
         graph = new ArrayList[pcN + 1]; // 무방향성 그래프
-        for(int i = 0; i <= pcN; i++)
+        for(int i = 1; i <= pcN; i++)
             graph[i] = new ArrayList<>();
         for(int i = 0; i < linkN; i++) {
             st = new StringTokenizer(br.readLine());
