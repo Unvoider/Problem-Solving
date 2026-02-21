@@ -3,23 +3,31 @@ import sys
 input = sys.stdin.readline
 write = sys.stdout.write
 
-#깊이 우선 탐색
-def dfs_(start, graph, visited):
-    for end in graph[start]:
-        if not visited[end]:
-            visited[end] = True
-            write(f"{end} ")
-            dfs_(end, graph, visited)
+n, m, v = map(int, input().split())
 
-def dfs(start, graph):
-    visited = [False] * len(graph)
+graph = [[] for _ in range(n + 1)] #무방향성 그래프
+for _ in range(m):
+    start, end = map(int, input().split())
+    graph[start].append(end)
+    graph[end].append(start)
+for node in graph: #정렬
+    node.sort()
+
+#깊이 우선 탐색
+def dfs_recursive(start, visited):
     visited[start] = True
     write(f"{start} ")
-    dfs_(start, graph, visited)
+    for end in graph[start]:
+        if not visited[end]:
+            dfs_recursive(end, visited)
+
+def dfs(start):
+    visited = [False] * len(graph)
+    dfs_recursive(start, visited)
     write("\n")
 
 #너비 우선 탐색
-def bfs(start, graph):
+def bfs(start):
     d = deque([start])
     visited = [False] * len(graph)
     visited[start] = True
@@ -33,18 +41,5 @@ def bfs(start, graph):
                 write(f"{end} ")
     write("\n")
 
-def main():
-    n, m, v = map(int, input().split())
-
-    graph = [[] for _ in range(n + 1)] #무방향성 그래프
-    for _ in range(m):
-        start, end = map(int, input().split())
-        graph[start].append(end)
-        graph[end].append(start)
-    for node in graph: #정렬
-        node.sort()
-
-    dfs(v, graph)
-    bfs(v, graph)
-
-main()
+dfs(v)
+bfs(v)

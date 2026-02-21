@@ -4,28 +4,28 @@
 #include <queue>
 using namespace std;
 
-// 깊이 우선 탐색
-void dfs_(int start, const vector<vector<int>>& graph, vector<char>& visited) {
-    for (int end : graph[start])
-        if (!visited[end]) {
-            visited[end] = true;
-            cout << end << ' ';
-            dfs_(end, graph, visited);
-        }
-}
+vector<vector<int>> graph;
+vector<char> visited;
 
-void dfs(int start, const vector<vector<int>>& graph) {
-    vector<char> visited(graph.size());
+// 깊이 우선 탐색
+void dfs_recursive(int start) {
     visited[start] = true;
     cout << start << ' ';
-    dfs_(start, graph, visited);
+    for (int end : graph[start])
+        if (!visited[end])
+            dfs_recursive(end);
+}
+
+void dfs(int start) {
+    visited = vector<char>(graph.size());
+    dfs_recursive(start);
     cout << '\n';
 }
 
 // 너비 우선 탐색
-void bfs(int start, const vector<vector<int>>& graph) {
+void bfs(int start) {
     queue<int> q;
-    vector<char> visited(graph.size());
+    visited = vector<char>(graph.size());
     q.push(start);
     visited[start] = true;
     cout << start << ' ';
@@ -49,7 +49,7 @@ int main() {
     int n, m, v;
     cin >> n >> m >> v;
 
-    vector<vector<int>> graph(n + 1); // 무방향성 그래프
+    graph = vector<vector<int>>(n + 1); // 무방향성 그래프
     while (m--) {
         int start, end;
         cin >> start >> end;
@@ -59,8 +59,8 @@ int main() {
     for (vector<int>& node : graph) // 정렬
         sort(node.begin(), node.end());
 
-    dfs(v, graph);
-    bfs(v, graph);
+    dfs(v);
+    bfs(v);
 
     return 0;
 }

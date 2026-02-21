@@ -2,27 +2,29 @@ import java.io.*;
 import java.util.*;
 
 class Main {
+    private static StringBuilder sb;
+    private static ArrayList<Integer>[] graph;
+    private static boolean[] visited;
+
     // 깊이 우선 탐색
-    private static void dfs_(int start, ArrayList<Integer>[] graph, boolean[] visited, StringBuilder sb) {
-        for(int end: graph[start])
-            if(!visited[end]) {
-                visited[end] = true;
-                sb.append(end).append(' ');
-                dfs_(end, graph, visited, sb);
-            }
-    }
-    private static void dfs(int start, ArrayList<Integer>[] graph, StringBuilder sb) {
-        boolean[] visited = new boolean[graph.length];
+    private static void dfsRecursive(int start) {
         visited[start] = true;
         sb.append(start).append(' ');
-        dfs_(start, graph, visited, sb);
+        for(int end: graph[start])
+            if(!visited[end]) {
+                dfsRecursive(end);
+            }
+    }
+    private static void dfs(int start) {
+        visited = new boolean[graph.length];
+        dfsRecursive(start);
         sb.append('\n');
     }
 
     // 너비 우선 탐색
-    private static void bfs(int start, ArrayList<Integer>[] graph, StringBuilder sb) {
+    private static void bfs(int start) {
         Deque<Integer> deque = new ArrayDeque<>();
-        boolean[] visited = new boolean[graph.length];
+        visited = new boolean[graph.length];
         deque.addLast(start);
         visited[start] = true;
         sb.append(start).append(' ');
@@ -40,10 +42,9 @@ class Main {
 
     public static void main(String[] args) throws IOException {
         int n, m, v;
-        ArrayList<Integer>[] graph;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
         StringTokenizer st = new StringTokenizer(br.readLine());
+        sb = new StringBuilder();
 
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
@@ -62,8 +63,8 @@ class Main {
         for(int i = 1; i <= n; i++) // 정렬
             Collections.sort(graph[i]);
 
-        dfs(v, graph, sb);
-        bfs(v, graph, sb);
+        dfs(v);
+        bfs(v);
 
         System.out.print(sb);
         br.close();
