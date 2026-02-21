@@ -56,11 +56,10 @@ class Main {
     private static boolean[] visited;
 
     private static void dfs(int start) {
+        visited[start] = true;
         for(int end: graph[start])
-            if(!visited[end]) {
-                visited[end] = true;
+            if(!visited[end])
                 dfs(end);
-            }
     }
 
     public static void main(String[] args) throws IOException {
@@ -83,8 +82,7 @@ class Main {
         }
 
         visited = new boolean[pcN + 1];
-        visited[1] = true; // 1번 감염
-        dfs(1);
+        dfs(1); // 1번 감염
 
         int infectedCount = 0;
         for(int i = 2; i <= pcN; i++)

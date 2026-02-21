@@ -35,11 +35,10 @@ const inputFile = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = require("fs").readFileSync(inputFile, "utf8").trim().split(/\s+/).map(Number);
 
 const dfs = (start, graph, visited) => {
+    visited[start] = true;
     for(const end of graph[start])
-        if(!visited[end]) {
-            visited[end] = true;
+        if(!visited[end])
             dfs(end, graph, visited);
-        }
 }
 
 const pcN = input[0];
@@ -55,7 +54,6 @@ for(let _ = 0; _ < linkN; _++) {
 }
 
 const visited = new Array(pcN + 1).fill(false);
-visited[1] = true; // 1번 감염
-dfs(1, graph, visited);
+dfs(1, graph, visited); // 1번 감염
 console.log(visited.filter((val) => val).length - 1);
 */

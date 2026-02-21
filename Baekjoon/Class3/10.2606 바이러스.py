@@ -30,9 +30,9 @@ import sys
 input = sys.stdin.readline
 
 def dfs(start, graph, visited):
+    visited[start] = True
     for end in graph[start]:
         if not visited[end]:
-            visited[end] = True
             dfs(end, graph, visited)
 
 def main():
@@ -46,8 +46,7 @@ def main():
         graph[end].append(start)
     
     visited = [False] * (pc_n + 1)
-    visited[1] = True #1번 감염
-    dfs(1, graph, visited)
+    dfs(1, graph, visited) #1번 감염
     print(visited.count(True) - 1)
 
 main()

@@ -48,11 +48,10 @@ vector<vector<int>> graph;
 vector<char> visited;
 
 void dfs(int start) {
+    visited[start] = true;
     for (int end : graph[start])
-        if (!visited[end]) {
-            visited[end] = true;
+        if (!visited[end])
             dfs(end);
-        }
 }
 
 int main() {
@@ -71,8 +70,7 @@ int main() {
     }
 
     visited = vector<char>(pc_n + 1);
-    visited[1] = true; // 1번 감염
-    dfs(1);
+    dfs(1); // 1번 감염
     cout << count(visited.begin(), visited.end(), true) - 1;
     return 0;
 }
