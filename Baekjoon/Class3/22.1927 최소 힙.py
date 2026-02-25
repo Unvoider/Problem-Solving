@@ -64,8 +64,7 @@ for _ in range(n):
     x = int(input())
     if x == 0:
         if min_heap:
-            write(f"{min_heap[0]}\n")
-            heapq.heappop(min_heap)
+            write(f"{heapq.heappop(min_heap)}\n")
         else:
             write("0\n")
     else:
