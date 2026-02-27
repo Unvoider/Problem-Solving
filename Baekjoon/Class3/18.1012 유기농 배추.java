@@ -37,14 +37,15 @@ class Main {
                 }
                 while(!bfs.isEmpty()) { // 너비 우선 탐색
                     int[] start = bfs.removeFirst();
-                    for(int i = 0; i < MOVE_DIR.length; i++) {
-                        int endX = start[0] + MOVE_DIR[i][0];
-                        int endY = start[1] + MOVE_DIR[i][1];
-                        if(endX >= 0 && endX < m && endY >= 0 && endY < n)
-                            if(graph[endX][endY]) {
-                                bfs.addLast(new int[]{endX, endY});
-                                graph[endX][endY] = false;
-                            }
+                    for(int[] moveDir: MOVE_DIR) {
+                        int endX = start[0] + moveDir[0];
+                        int endY = start[1] + moveDir[1];
+                        if(endX < 0 || endX >= m || endY < 0 || endY >= n)
+                            continue;
+                        if(graph[endX][endY]) {
+                            bfs.addLast(new int[]{endX, endY});
+                            graph[endX][endY] = false;
+                        }
                     }
                 }
             }

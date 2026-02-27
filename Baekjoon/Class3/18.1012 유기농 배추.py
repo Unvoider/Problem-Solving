@@ -3,7 +3,7 @@ import sys
 input = sys.stdin.readline
 write = sys.stdout.write
 
-MOVE_DIR = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+MOVE_DIR = ((-1, 0), (1, 0), (0, -1), (0, 1))
 
 def count_worms():
     m, n, k = map(int, input().split())
@@ -26,10 +26,11 @@ def count_worms():
                 for move_x, move_y in MOVE_DIR:
                     end_x = start_x + move_x
                     end_y = start_y + move_y
-                    if end_x >= 0 and end_x < m and end_y >= 0 and end_y < n:
-                        if graph[end_x][end_y]:
-                            bfs.append((end_x, end_y))
-                            graph[end_x][end_y] = False
+                    if end_x < 0 or end_x >= m or end_y < 0 or end_y >= n:
+                        continue
+                    if graph[end_x][end_y]:
+                        bfs.append((end_x, end_y))
+                        graph[end_x][end_y] = False
     write(f"{components}\n") #연결 요소 수
 
 def main():

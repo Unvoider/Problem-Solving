@@ -26,11 +26,12 @@ const countWorms = (out) => {
                 let bfsHead = 0;
                 const bfs = [[x, y]];
                 while(bfsHead < bfs.length) { // 너비 우선 탐색
-                const [startX, startY] = bfs[bfsHead++];
-                for(const [moveX, moveY] of MOVE_DIR) {
-                    const endX = startX + moveX;
-                    const endY = startY + moveY;
-                    if(endX >= 0 && endX < m && endY >= 0 && endY < n)
+                    const [startX, startY] = bfs[bfsHead++];
+                    for(const [moveX, moveY] of MOVE_DIR) {
+                        const endX = startX + moveX;
+                        const endY = startY + moveY;
+                        if(endX < 0 || endX >= m || endY < 0 || endY >= n)
+                            continue;
                         if(graph[endX][endY]) {
                             bfs.push([endX, endY]);
                             graph[endX][endY] = false;
@@ -38,8 +39,7 @@ const countWorms = (out) => {
                     }
                 }
             }
-            
-        }  
+        }
     }
     out.push(components); // 연결 요소 수
 }

@@ -3,7 +3,7 @@
 #include <vector>
 #include <queue>
 using namespace std;
-constexpr int MOVE_DIR[4][2] = {
+constexpr pair<int, int> MOVE_DIR[4] = {
     {-1, 0},
     {1, 0},
     {0, -1},
@@ -33,14 +33,15 @@ void count_worms() {
             while (!bfs.empty()) { // 너비 우선 탐색
                 const pair<int, int>& start = bfs.front();
                 bfs.pop();
-                for (int i = 0; i < 4; i++) {
-                    int end_x = start.first + MOVE_DIR[i][0];
-                    int end_y = start.second + MOVE_DIR[i][1];
-                    if (end_x >= 0 && end_x < m && end_y >= 0 && end_y < n)
-                        if (graph[end_x][end_y]) {
-                            bfs.push({ end_x, end_y });
-                            graph[end_x][end_y] = false;
-                        }
+                for (const pair<int, int>& move_dir : MOVE_DIR) {
+                    int end_x = start.first + move_dir.first;
+                    int end_y = start.second + move_dir.second;
+                    if (end_x < 0 || end_x >= m || end_y < 0 || end_y >= n)
+                        continue;
+                    if (graph[end_x][end_y]) {
+                        bfs.push({ end_x, end_y });
+                        graph[end_x][end_y] = false;
+                    }
                 }
             }
         }
