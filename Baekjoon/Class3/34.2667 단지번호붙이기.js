@@ -12,8 +12,8 @@ for(let i = 1; i <= n; i++)
     houses.push(input[i].split(""));
 
 const houseCounts = [];
-for(let x = 0; x < n; x++) {
-    for(let y = 0; y < n; y++) {
+for(let x = 0; x < n; x++)
+    for(let y = 0; y < n; y++)
         if(houses[x][y] === HOUSE) { // 집이 있음
             let houseCount = 1;
             let bfsHead = 0; // 너비 우선 탐색
@@ -35,8 +35,6 @@ for(let x = 0; x < n; x++) {
             }
             houseCounts.push(houseCount);
         }
-    }
-}
 
 houseCounts.sort((a, b) => a - b); // 오름차순 정렬
 console.log(`${houseCounts.length}\n${houseCounts.join("\n")}`); // 단지 수와 단지당 집 수

@@ -30,8 +30,8 @@ int main() {
 
     vector<int> house_counts;
     queue<Point> bfs; // 너비 우선 탐색
-    for (int x = 0; x < n; x++) {
-        for (int y = 0; y < n; y++) {
+    for (int x = 0; x < n; x++)
+        for (int y = 0; y < n; y++)
             if (houses[x][y] == HOUSE) { // 집이 있음
                 int house_count = 1;
                 bfs.push({ x, y });
@@ -53,8 +53,6 @@ int main() {
                 }
                 house_counts.push_back(house_count);
             }
-        }
-    }
 
     sort(house_counts.begin(), house_counts.end()); // 오름차순 정렬
     cout << house_counts.size() << '\n'; // 단지 수

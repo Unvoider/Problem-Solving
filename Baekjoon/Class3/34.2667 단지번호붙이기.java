@@ -28,8 +28,8 @@ class Main {
         for(int i = 0; i < n; i++)
             houses[i] = br.readLine().toCharArray();
 
-        for(int x = 0; x < n; x++) { // 너비 우선 탐색
-            for(int y = 0; y < n; y++) {
+        for(int x = 0; x < n; x++) // 너비 우선 탐색
+            for(int y = 0; y < n; y++)
                 if(houses[x][y] == HOUSE) { // 집이 있음
                     int houseCount = 1;
                     bfs.addLast(new Point(x, y));
@@ -50,8 +50,6 @@ class Main {
                     }
                     houseCounts.add(houseCount);
                 }
-            }
-        }
 
         Collections.sort(houseCounts); // 오름차순 정렬
         sb.append(houseCounts.size()).append('\n'); // 단지 수
