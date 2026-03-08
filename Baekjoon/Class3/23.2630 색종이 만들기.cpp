@@ -11,24 +11,24 @@ struct PaperCount {
 
 vector<vector<char>> paper;
 
-bool is_uniform(int x, int y, int size) {
-    char first = paper[x][y];
-    for (int i = x; i < x + size; i++)
-        for (int j = y; j < y + size; j++)
+bool is_uniform(int r, int c, int size) {
+    char first = paper[r][c];
+    for (int i = r; i < r + size; i++)
+        for (int j = c; j < c + size; j++)
             if (first != paper[i][j])
                 return false;
     return true;
 }
 
-PaperCount cut_papers(int x, int y, int size) {
-    if (is_uniform(x, y, size)) // 모두 같은 색일 때 종료
-        return { paper[x][y] == WHITE, paper[x][y] == BLUE };
+PaperCount cut_papers(int r, int c, int size) {
+    if (is_uniform(r, c, size)) // 모두 같은 색일 때 종료
+        return { paper[r][c] == WHITE, paper[r][c] == BLUE };
 
     int half = size / 2; // 사등분
     int white = 0, blue = 0;
     for (int i = 0; i < 2; i++)
         for (int j = 0; j < 2; j++) {
-            PaperCount paper_count = cut_papers(x + i * half, y + j * half, half);
+            PaperCount paper_count = cut_papers(r + i * half, c + j * half, half);
             white += paper_count.white;
             blue += paper_count.blue;
         }

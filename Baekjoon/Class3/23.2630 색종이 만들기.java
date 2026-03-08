@@ -16,27 +16,27 @@ class Main {
 
     private static char[][] paper;
 
-    private static boolean isUniform(int x, int y, int size) {
-        char first = paper[x][y];
-        for(int i = x; i < x + size; i++)
-            for(int j = y; j < y + size; j++)
+    private static boolean isUniform(int r, int c, int size) {
+        char first = paper[r][c];
+        for(int i = r; i < r + size; i++)
+            for(int j = c; j < c + size; j++)
                 if(first != paper[i][j])
                     return false;
         return true;
     }
 
-    private static PaperCount cutPapers(int x, int y, int size) {
-        if(isUniform(x, y, size)) // 모두 같은 색일 때 종료
+    private static PaperCount cutPapers(int r, int c, int size) {
+        if(isUniform(r, c, size)) // 모두 같은 색일 때 종료
             return new PaperCount(
-                    paper[x][y] == WHITE ? 1 : 0,
-                    paper[x][y] == BLUE ? 1 : 0
+                    paper[r][c] == WHITE ? 1 : 0,
+                    paper[r][c] == BLUE ? 1 : 0
             );
 
         int half = size / 2; // 사등분
         int white = 0, blue = 0;
         for(int i = 0; i < 2; i++)
             for (int j = 0; j < 2; j++) {
-                PaperCount paper_count = cutPapers(x + i * half, y + j * half, half);
+                PaperCount paper_count = cutPapers(r + i * half, c + j * half, half);
                 white += paper_count.white;
                 blue += paper_count.blue;
             }
