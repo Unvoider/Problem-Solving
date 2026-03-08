@@ -71,7 +71,7 @@ class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        graph = new int[n + 1][n + 1]; // 격자 그래프
+        graph = new int[n + 1][n + 1]; // 인접 행렬
         for(int i = 1; i <= n; i++)
             Arrays.fill(graph[i], MAX_USERS);
         for(int i = 0; i < m; i++) {

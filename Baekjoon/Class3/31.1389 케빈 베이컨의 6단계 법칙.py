@@ -40,7 +40,7 @@ MAX_USERS = 100
 
 n, m = map(int, input().split())
 
-graph = [[MAX_USERS] * (n + 1) for _ in range(n + 1)] #격자 그래프
+graph = [[MAX_USERS] * (n + 1) for _ in range(n + 1)] #인접 행렬
 for _ in range(m):
     start, end = map(int, input().split())
     graph[start][end] = 1

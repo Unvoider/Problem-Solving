@@ -47,7 +47,7 @@ const MAX_USERS = 100;
 
 const [n, m] = input[0].split(" ").map(Number);
 
-const graph = Array.from({ length : n + 1 }, () => new Array(n + 1).fill(MAX_USERS));
+const graph = Array.from({ length : n + 1 }, () => new Array(n + 1).fill(MAX_USERS)); // 인접 행렬
 for(let i = 1; i <= m; i++) {
     const [start, end] = input[i].split(" ").map(Number);
     graph[start][end] = 1;

@@ -64,7 +64,7 @@ int main() {
     int n, m;
     cin >> n >> m;
 
-    vector<vector<int>> graph(n + 1, vector<int>(n + 1, MAX_USERS)); // 격자 그래프
+    vector<vector<int>> graph(n + 1, vector<int>(n + 1, MAX_USERS)); // 인접 행렬
     while (m--) {
         int start, end;
         cin >> start >> end;
