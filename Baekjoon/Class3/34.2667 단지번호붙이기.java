@@ -3,8 +3,8 @@ import java.util.*;
 
 class Main {
     private static class Point {
-        int x, y;
-        public Point(int x, int y) { this.x = x; this.y = y; }
+        int r, c;
+        public Point(int r, int c) { this.r = r; this.c = c; }
     }
     private static final Point[] MOVE_DIR = {
             new Point(-1, 0),
@@ -28,23 +28,23 @@ class Main {
         for(int i = 0; i < n; i++)
             houses[i] = br.readLine().toCharArray();
 
-        for(int x = 0; x < n; x++) // 너비 우선 탐색
-            for(int y = 0; y < n; y++)
-                if(houses[x][y] == HOUSE) { // 집이 있음
+        for(int r = 0; r < n; r++) // 너비 우선 탐색
+            for(int c = 0; c < n; c++)
+                if(houses[r][c] == HOUSE) { // 집이 있음
                     int houseCount = 1;
-                    bfs.addLast(new Point(x, y));
-                    houses[x][y] = EMPTY;
+                    bfs.addLast(new Point(r, c));
+                    houses[r][c] = EMPTY;
                     while(!bfs.isEmpty()) { // 인접한 집 확인
                         Point start = bfs.removeFirst();
                         for(Point moveDir: MOVE_DIR) {
-                            int endX = start.x + moveDir.x;
-                            int endY = start.y + moveDir.y;
-                            if(endX < 0 || endX >= n || endY < 0 || endY >= n)
+                            int endR = start.r + moveDir.r;
+                            int endC = start.c + moveDir.c;
+                            if(endR < 0 || endR >= n || endC < 0 || endC >= n)
                                 continue;
-                            if(houses[endX][endY] == HOUSE) { // 인접한 집이 있음
+                            if(houses[endR][endC] == HOUSE) { // 인접한 집이 있음
                                 houseCount++;
-                                bfs.addLast(new Point(endX, endY));
-                                houses[endX][endY] = EMPTY;
+                                bfs.addLast(new Point(endR, endC));
+                                houses[endR][endC] = EMPTY;
                             }
                         }
                     }

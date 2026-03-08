@@ -10,27 +10,27 @@ def count_worms():
 
     graph = [[False for _ in range(n)] for _ in range(m)] #격자 그래프
     for _ in range(k):
-        x, y = map(int, input().split())
-        graph[x][y] = True
+        r, c = map(int, input().split())
+        graph[r][c] = True
 
     bfs = deque()
     components = 0
-    for x in range(m):
-        for y in range(n):
-            if graph[x][y]: #연결 요소 시작점 찾기
-                bfs.append((x, y))
-                graph[x][y] = False
+    for r in range(m):
+        for c in range(n):
+            if graph[r][c]: #연결 요소 시작점 찾기
+                bfs.append((r, c))
+                graph[r][c] = False
                 components += 1
             while len(bfs): #너비 우선 탐색
-                start_x, start_y = bfs.popleft()
-                for move_x, move_y in MOVE_DIR:
-                    end_x = start_x + move_x
-                    end_y = start_y + move_y
-                    if end_x < 0 or end_x >= m or end_y < 0 or end_y >= n:
+                start_r, start_c = bfs.popleft()
+                for move_r, move_c in MOVE_DIR:
+                    end_r = start_r + move_r
+                    end_c = start_c + move_c
+                    if end_r < 0 or end_r >= m or end_c < 0 or end_c >= n:
                         continue
-                    if graph[end_x][end_y]:
-                        bfs.append((end_x, end_y))
-                        graph[end_x][end_y] = False
+                    if graph[end_r][end_c]:
+                        bfs.append((end_r, end_c))
+                        graph[end_r][end_c] = False
     write(f"{components}\n") #연결 요소 수
 
 def main():

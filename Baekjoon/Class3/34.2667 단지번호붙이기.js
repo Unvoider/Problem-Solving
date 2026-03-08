@@ -12,24 +12,24 @@ for(let i = 1; i <= n; i++)
     houses.push(input[i].split(""));
 
 const houseCounts = [];
-for(let x = 0; x < n; x++)
-    for(let y = 0; y < n; y++)
-        if(houses[x][y] === HOUSE) { // 집이 있음
+for(let r = 0; r < n; r++)
+    for(let c = 0; c < n; c++)
+        if(houses[r][c] === HOUSE) { // 집이 있음
             let houseCount = 1;
             let bfsHead = 0; // 너비 우선 탐색
-            const bfs = [[x, y]];
-            houses[x][y] = EMPTY;
+            const bfs = [[r, c]];
+            houses[r][c] = EMPTY;
             while(bfsHead < bfs.length) { // 인접한 집 확인
-                const [startX, startY] = bfs[bfsHead++];
-                for(const [moveX, moveY] of MOVE_DIR) {
-                    const endX = startX + moveX;
-                    const endY = startY + moveY;
-                    if(endX < 0 || endX >= n || endY < 0 || endY >= n)
+                const [startR, startC] = bfs[bfsHead++];
+                for(const [moveR, moveC] of MOVE_DIR) {
+                    const endR = startR + moveR;
+                    const endC = startC + moveC;
+                    if(endR < 0 || endR >= n || endC < 0 || endC >= n)
                         continue;
-                    if(houses[endX][endY] === HOUSE) { // 인접한 집이 있음
+                    if(houses[endR][endC] === HOUSE) { // 인접한 집이 있음
                         houseCount++;
-                        bfs.push([endX, endY]);
-                        houses[endX][endY] = EMPTY;
+                        bfs.push([endR, endC]);
+                        houses[endR][endC] = EMPTY;
                     }
                 }
             }

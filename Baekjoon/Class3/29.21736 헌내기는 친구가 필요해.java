@@ -5,8 +5,8 @@ import java.util.StringTokenizer;
 
 class Main {
     private static class Point {
-        int x, y;
-        Point(int x, int y) { this.x = x; this.y = y; }
+        int r, c;
+        Point(int r, int c) { this.r = r; this.c = c; }
     }
     private static final Point[] MOVE_DIR = {
             new Point(-1, 0),
@@ -26,29 +26,29 @@ class Main {
         m = Integer.parseInt(st.nextToken());
 
         campus = new char[n][m];
-        for(int x = 0; x < n; x++) {
+        for(int r = 0; r < n; r++) {
             String row = br.readLine();
-            campus[x] = row.toCharArray();
-            int y = row.indexOf('I'); // 시작점 찾기
-            if(y != -1) {
-                bfs.addLast(new Point(x, y));
-                campus[x][y] = 'X'; // 방문 처리
+            campus[r] = row.toCharArray();
+            int c = row.indexOf('I'); // 시작점 찾기
+            if(c != -1) {
+                bfs.addLast(new Point(r, c));
+                campus[r][c] = 'X'; // 방문 처리
             }
         }
 
         while(!bfs.isEmpty()) { // 주변 사람 찾기
             Point start = bfs.removeFirst();
             for (Point moveDir : MOVE_DIR) { // 모든 방향에 대해
-                int endX = start.x + moveDir.x;
-                int endY = start.y + moveDir.y;
-                if (endX < 0 || endX >= n || endY < 0 || endY >= m) // 경계 확인
+                int endR = start.r + moveDir.r;
+                int endC = start.c + moveDir.c;
+                if (endR < 0 || endR >= n || endC < 0 || endC >= m) // 경계 확인
                     continue;
-                switch (campus[endX][endY]) {
+                switch (campus[endR][endC]) {
                     case 'P': // 사람 발견(fall-through)
                         people++;
                     case 'O': // 빈 공간으로 이동
-                        bfs.addLast(new Point(endX, endY));
-                        campus[endX][endY] = 'X'; // 방문 처리
+                        bfs.addLast(new Point(endR, endC));
+                        campus[endR][endC] = 'X'; // 방문 처리
                 }
             }
         }

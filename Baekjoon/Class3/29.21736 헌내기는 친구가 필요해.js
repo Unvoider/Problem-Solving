@@ -8,31 +8,31 @@ const [n, m] = input[0].split(" ").map(Number);
 let bfsHead = 0;
 const bfs = [];
 const campus = [];
-for(let x = 0; x < n; x++) {
-    const row = input[x + 1];
-    campus[x] = row.split("");
-    const y = row.indexOf("I"); // 시작점 찾기
-    if(y !== -1) {
-        bfs.push([x, y]);
-        campus[x][y] = "X"; // 방문 처리
+for(let r = 0; r < n; r++) {
+    const row = input[r + 1];
+    campus[r] = row.split("");
+    const c = row.indexOf("I"); // 시작점 찾기
+    if(c !== -1) {
+        bfs.push([r, c]);
+        campus[r][c] = "X"; // 방문 처리
     }
 }
 
 let people = 0; // 주변 사람 찾기
 while(bfsHead < bfs.length) {
-    const [startX, startY] = bfs[bfsHead++];
-    for(const [moveX, moveY] of MOVE_DIR) { // 모든 방향에 대해
-        const endX = startX + moveX;
-        const endY = startY + moveY;
-        if(endX < 0 || endX >= n || endY < 0 || endY >= m) // 경계 확인
+    const [startR, startC] = bfs[bfsHead++];
+    for(const [moveR, moveC] of MOVE_DIR) { // 모든 방향에 대해
+        const endR = startR + moveR;
+        const endC = startC + moveC;
+        if(endR < 0 || endR >= n || endC < 0 || endC >= m) // 경계 확인
             continue;
-        const target = campus[endX][endY];
+        const target = campus[endR][endC];
         if(target === "X")
             continue;
         if(target === "P") // 사람 발견
             people++;
-        bfs.push([endX, endY]); // 빈 공간으로 이동
-        campus[endX][endY] = "X" // 방문 처리
+        bfs.push([endR, endC]); // 빈 공간으로 이동
+        campus[endR][endC] = "X" // 방문 처리
     }
 }
 

@@ -11,30 +11,30 @@ const countWorms = (out) => {
     
     const graph = Array.from({ length: m }, () => new Array(n).fill(false)); // 격자 그래프
     for(let _ = 0; _ < k; _++) {
-        const x = input[cursor++];
-        const y = input[cursor++];
-        graph[x][y] = true;
+        const r = input[cursor++];
+        const c = input[cursor++];
+        graph[r][c] = true;
     }
 
     let components = 0;
-    for(let x = 0; x < m; x++) {
-        for(let y = 0; y < n; y++) {
-            if(graph[x][y]) { // 연결 요소 시작점 찾기
-                graph[x][y] = false;
+    for(let r = 0; r < m; r++) {
+        for(let c = 0; c < n; c++) {
+            if(graph[r][c]) { // 연결 요소 시작점 찾기
+                graph[r][c] = false;
                 components++;
 
                 let bfsHead = 0;
-                const bfs = [[x, y]];
+                const bfs = [[r, c]];
                 while(bfsHead < bfs.length) { // 너비 우선 탐색
-                    const [startX, startY] = bfs[bfsHead++];
-                    for(const [moveX, moveY] of MOVE_DIR) {
-                        const endX = startX + moveX;
-                        const endY = startY + moveY;
-                        if(endX < 0 || endX >= m || endY < 0 || endY >= n)
+                    const [startR, startC] = bfs[bfsHead++];
+                    for(const [moveR, moveC] of MOVE_DIR) {
+                        const endR = startR + moveR;
+                        const endC = startC + moveC;
+                        if(endR < 0 || endR >= m || endC < 0 || endC >= n)
                             continue;
-                        if(graph[endX][endY]) {
-                            bfs.push([endX, endY]);
-                            graph[endX][endY] = false;
+                        if(graph[endR][endC]) {
+                            bfs.push([endR, endC]);
+                            graph[endR][endC] = false;
                         }
                     }
                 }

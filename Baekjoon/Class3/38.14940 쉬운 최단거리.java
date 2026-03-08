@@ -5,8 +5,8 @@ import java.util.StringTokenizer;
 
 class Main {
     private static class Point{
-        int x, y;
-        public Point(int x, int y) { this.x = x; this.y = y; }
+        int r, c;
+        public Point(int r, int c) { this.r = r; this.c = c; }
     }
     private static final Point[] MOVE_DIR = {
             new Point(-1, 0),
@@ -29,36 +29,36 @@ class Main {
 
         graph = new int[n][m]; // 격자 그래프
         depths = new int[n][m];
-        for(int i = 0; i < n; i++) {
+        for(int r = 0; r < n; r++) {
             st = new StringTokenizer(br.readLine());
-            for(int j = 0; j < m; j++) {
+            for(int c = 0; c < m; c++) {
                 int num = Integer.parseInt(st.nextToken());
-                graph[i][j] = num;
+                graph[r][c] = num;
                 if(num == 1)
-                    depths[i][j] = -1;
+                    depths[r][c] = -1;
                 else if(num == 2) // 목표 지점
-                    bfs.addLast(new Point(i, j));
+                    bfs.addLast(new Point(r, c));
             }
         }
 
         while(!bfs.isEmpty()) { // 너비 우선 탐색
             Point start = bfs.removeFirst();
             for(Point moveDir: MOVE_DIR) {
-                int endX = start.x + moveDir.x;
-                int endY = start.y + moveDir.y;
-                if(endX < 0 || endX >= n || endY < 0 || endY >= m)
+                int endR = start.r + moveDir.r;
+                int endC = start.c + moveDir.c;
+                if(endR < 0 || endR >= n || endC < 0 || endC >= m)
                     continue;
-                if(graph[endX][endY] == 1) { // 갈 수 있음
-                    graph[endX][endY] = 0; // 방문 표시
-                    depths[endX][endY] = depths[start.x][start.y] + 1; // 깊이 계산
-                    bfs.addLast(new Point(endX, endY));
+                if(graph[endR][endC] == 1) { // 갈 수 있음
+                    graph[endR][endC] = 0; // 방문 표시
+                    depths[endR][endC] = depths[start.r][start.c] + 1; // 깊이 계산
+                    bfs.addLast(new Point(endR, endC));
                 }
             }
         }
 
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++)
-                sb.append(depths[i][j]).append(' ');
+        for(int r = 0; r < n; r++) {
+            for(int c = 0; c < m; c++)
+                sb.append(depths[r][c]).append(' ');
             sb.append('\n');
         }
         System.out.print(sb);

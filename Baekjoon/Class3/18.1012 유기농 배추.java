@@ -21,30 +21,30 @@ class Main {
         boolean[][] graph = new boolean[m][n]; // 격자 그래프
         for(int i = 0; i < k; i++) {
             st = new StringTokenizer(br.readLine());
-            int x = Integer.parseInt(st.nextToken());
-            int y = Integer.parseInt(st.nextToken());
-            graph[x][y] = true;
+            int r = Integer.parseInt(st.nextToken());
+            int c = Integer.parseInt(st.nextToken());
+            graph[r][c] = true;
         }
 
         Deque<int[]> bfs = new ArrayDeque<>();
         int components = 0;
-        for(int x = 0; x < m; x++) {
-            for(int y = 0; y < n; y++) {
-                if(graph[x][y]) { // 연결 요소 시작점 찾기
-                    bfs.addLast(new int[]{x, y});
-                    graph[x][y] = false;
+        for(int r = 0; r < m; r++) {
+            for(int c = 0; c < n; c++) {
+                if(graph[r][c]) { // 연결 요소 시작점 찾기
+                    bfs.addLast(new int[]{r, c});
+                    graph[r][c] = false;
                     components++;
                 }
                 while(!bfs.isEmpty()) { // 너비 우선 탐색
                     int[] start = bfs.removeFirst();
                     for(int[] moveDir: MOVE_DIR) {
-                        int endX = start[0] + moveDir[0];
-                        int endY = start[1] + moveDir[1];
-                        if(endX < 0 || endX >= m || endY < 0 || endY >= n)
+                        int endR = start[0] + moveDir[0];
+                        int endC = start[1] + moveDir[1];
+                        if(endR < 0 || endR >= m || endC < 0 || endC >= n)
                             continue;
-                        if(graph[endX][endY]) {
-                            bfs.addLast(new int[]{endX, endY});
-                            graph[endX][endY] = false;
+                        if(graph[endR][endC]) {
+                            bfs.addLast(new int[]{endR, endC});
+                            graph[endR][endC] = false;
                         }
                     }
                 }

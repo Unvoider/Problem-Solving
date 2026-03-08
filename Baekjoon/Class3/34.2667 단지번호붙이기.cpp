@@ -6,7 +6,7 @@
 using namespace std;
 
 struct Point {
-    int x, y;
+    int r, c;
 };
 constexpr Point MOVE_DIR[] = {
     {-1, 0},
@@ -30,24 +30,24 @@ int main() {
 
     vector<int> house_counts;
     queue<Point> bfs; // 너비 우선 탐색
-    for (int x = 0; x < n; x++)
-        for (int y = 0; y < n; y++)
-            if (houses[x][y] == HOUSE) { // 집이 있음
+    for (int r = 0; r < n; r++)
+        for (int c = 0; c < n; c++)
+            if (houses[r][c] == HOUSE) { // 집이 있음
                 int house_count = 1;
-                bfs.push({ x, y });
-                houses[x][y] = EMPTY;
+                bfs.push({ r, c });
+                houses[r][c] = EMPTY;
                 while (!bfs.empty()) { // 인접한 집 확인
                     const Point start = bfs.front();
                     bfs.pop();
                     for (const Point& move_dir : MOVE_DIR) {
-                        int end_x = start.x + move_dir.x;
-                        int end_y = start.y + move_dir.y;
-                        if (end_x < 0 || end_x >= n || end_y < 0 || end_y >= n)
+                        int end_r = start.r + move_dir.r;
+                        int end_c = start.c + move_dir.c;
+                        if (end_r < 0 || end_r >= n || end_c < 0 || end_c >= n)
                             continue;
-                        if (houses[end_x][end_y] == HOUSE) { // 인접한 집이 있음
+                        if (houses[end_r][end_c] == HOUSE) { // 인접한 집이 있음
                             house_count++;
-                            bfs.push({ end_x, end_y });
-                            houses[end_x][end_y] = EMPTY;
+                            bfs.push({ end_r, end_c });
+                            houses[end_r][end_c] = EMPTY;
                         }
                     }
                 }

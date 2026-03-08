@@ -12,26 +12,26 @@ for(let i = 1; i <= n; i++)
 const depths = Array.from({ length : n }, () => new Array(m).fill(0));
 let bfsHead = 0;
 const bfs = [];
-for(let i = 0; i < n; i++)
-    for(let j = 0; j < m; j++) {
-        const num = graph[i][j]
+for(let r = 0; r < n; r++)
+    for(let c = 0; c < m; c++) {
+        const num = graph[r][c]
         if(num === 1)
-            depths[i][j] = -1;
+            depths[r][c] = -1;
         else if(num === 2) // 목표 지점
-            bfs.push([i, j]);
+            bfs.push([r, c]);
     }
 
 while(bfsHead < bfs.length) { // 너비 우선 탐색
-    const [startX, startY] = bfs[bfsHead++];
-    for(const [moveX, moveY] of MOVE_DIR) {
-        const endX = startX + moveX;
-        const endY = startY + moveY;
-        if(endX < 0 || endX >= n || endY < 0 || endY >= m)
+    const [startR, startC] = bfs[bfsHead++];
+    for(const [moveR, moveC] of MOVE_DIR) {
+        const endR = startR + moveR;
+        const endC = startC + moveC;
+        if(endR < 0 || endR >= n || endC < 0 || endC >= m)
             continue;
-        if(graph[endX][endY] === 1) { // 갈 수 있음
-            graph[endX][endY] = 0; // 방문 표시
-            depths[endX][endY] = depths[startX][startY] + 1; // 깊이 계산
-            bfs.push([endX, endY]);
+        if(graph[endR][endC] === 1) { // 갈 수 있음
+            graph[endR][endC] = 0; // 방문 표시
+            depths[endR][endC] = depths[startR][startC] + 1; // 깊이 계산
+            bfs.push([endR, endC]);
         }
     }
 }
