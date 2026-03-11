@@ -3,10 +3,17 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 class Main {
-    private static class MinHeap<T extends Comparable<T>> {
+    private static class Heap<T> {
+        @FunctionalInterface
+        private interface ElementComparator<T> {
+            int cmp(T a, T b);
+        }
+
+        private ElementComparator<T> cmp;
         private ArrayList<T> heap;
 
-        public MinHeap() {
+        public Heap(ElementComparator<T> cmp) {
+            this.cmp = cmp;
             heap = new ArrayList<>();
             heap.add(null); // root 인덱스 1
         }
@@ -16,9 +23,9 @@ class Main {
         public void push(T data) {
             int inPos = heap.size(); // 마지막 인덱스를 삽입 위치로
             int parent = inPos >> 1;
-            heap.add(null);
+            heap.add(null); // 끝 자리 만들기
             // 삽입 위치가 root가 아니고 자식 값이 부모 값보다 작은 동안
-            while(inPos != 1 && data.compareTo(heap.get(parent)) < 0) {
+            while(inPos != 1 && cmp.cmp(data, heap.get(parent)) < 0) {
                 heap.set(inPos, heap.get(parent)); // 부모를 자식으로
                 inPos >>= 1; // 자식을 부모로
                 parent = inPos >> 1;
@@ -34,9 +41,9 @@ class Main {
             int child = 2;
             int heapSize = heap.size();
             while(child < heapSize) { // 자식이 존재하는 동안
-                if(child + 1 < heapSize && heap.get(child).compareTo(heap.get(child + 1)) > 0)
+                if(child + 1 < heapSize && cmp.cmp(heap.get(child), heap.get(child + 1)) > 0)
                     child++; // 왼쪽/오른쪽 자식 중 더 작은 값 고르기
-                if(last.compareTo(heap.get(child)) <= 0) break; // 부모 값이 자식 값보다 큰 동안
+                if(cmp.cmp(last, heap.get(child)) <= 0) break; // 부모 값이 자식 값보다 큰 동안
                 heap.set(inPos, heap.get(child)); // 자식을 부모로
                 inPos = child; // 부모를 자식으로
                 child = inPos << 1;
@@ -48,7 +55,9 @@ class Main {
 
     public static void main(String[] args) throws IOException {
         int n;
-        MinHeap<Integer> minHeap = new MinHeap<>();
+        Heap<Integer> minHeap = new Heap<>((a, b) -> {
+            return a - b;
+        });
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
