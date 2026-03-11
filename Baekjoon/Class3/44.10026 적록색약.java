@@ -15,6 +15,7 @@ class Main {
     };
 
     private static class CountColorArea {
+        @FunctionalInterface
         private interface ColorComparator {
             boolean isEqual(char color1, char color2);
         }
