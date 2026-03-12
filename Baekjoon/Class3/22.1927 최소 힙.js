@@ -16,8 +16,8 @@ class Heap {
         let parent = inPos >> 1;
         this.#heap.push(null); // 끝 자리 만들기
         // 삽입 위치가 root가 아니고 자식 값이 부모 값보다 작은 동안
-        while(inPos !== 1 && this.#cmp(data, this.#heap[Math.trunc(parent)]) < 0) {
-            this.#heap[inPos] = this.#heap[Math.trunc(parent)]; // 부모를 자식으로
+        while(inPos !== 1 && this.#cmp(data, this.#heap[parent]) < 0) {
+            this.#heap[inPos] = this.#heap[parent]; // 부모를 자식으로
             inPos >>= 1; // 자식을 부모로
             parent = inPos >> 1;
         }
