@@ -19,7 +19,7 @@ void run_register() {
     queue<int> bfs; // 너비 우선 탐색
     bfs.push(a);
     operations[a].second = BEGINNING;
-    while (!bfs.empty()) {
+    while (true) {
         int start = bfs.front();
         bfs.pop();
 
@@ -135,7 +135,7 @@ void run_register() {
     a_operations[a].second = BEGINNING;
     b_operations[b].second = BEGINNING;
 
-    while (!a_bfs.empty() && !b_bfs.empty()) {
+    while (true) {
         int level_size = a_bfs.size();
         for (int _ = 0; _ < level_size; _++) { // 한 레벨씩
             int start = a_bfs.front();

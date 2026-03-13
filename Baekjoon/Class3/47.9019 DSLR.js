@@ -14,7 +14,7 @@ const runRegister = (out) => {
     let bfsHead = 0;
     const bfs = [a]; // 너비 우선 탐색
     operations[a] = ["", BEGINNING];
-    while(bfsHead < bfs.length) {
+    while(true) {
         const start = bfs[bfsHead++];
 
         const ends = [ // DSLR 계산

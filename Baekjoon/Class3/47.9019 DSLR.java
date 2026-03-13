@@ -28,7 +28,7 @@ class Main {
         Deque<Integer> bfs = new ArrayDeque<>(); // 너비 우선 탐색
         bfs.addLast(a);
         operations[a] = new Operation('\0', BEGINNING);
-        while(!bfs.isEmpty()) {
+        while(true) {
             int start = bfs.removeFirst();
 
             int[] ends = { // DSLR 계산

@@ -60,7 +60,7 @@ def run_register():
     a_operations[a] = ("", BEGINNING)
     b_operations[b] = ("", BEGINNING)
 
-    while a_bfs and b_bfs:
+    while True:
         for _ in range(len(a_bfs)): #한 레벨씩
             #정방향 DSLR 연산 저장
             start = a_bfs.popleft()
@@ -116,7 +116,7 @@ def run_register():
     prev_indexes = [NOT_VISITED] * (MAX_NUM + 1)
     bfs = deque([a]) #너비 우선 탐색
     prev_indexes[a] = BEGINNING
-    while bfs:
+    while True:
         start = bfs.popleft()
         for i in range(len(OPERATIONS)):
             end = DSLR[start][i]
