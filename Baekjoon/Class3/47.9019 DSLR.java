@@ -8,7 +8,7 @@ class Main {
     private static final int MAX_NUM = 9999;
     private static final int DIGIT_LIMIT = 10000;
     private static final int BEGINNING = -1;
-    private static final char[] SYMBOLS = {'D', 'S', 'L', 'R'};
+    private static final char[] OPERATIONS = {'D', 'S', 'L', 'R'};
 
     private static class Operation {
         char operation;
@@ -42,7 +42,7 @@ class Main {
                 int end = ends[i];
                 if(operations[end] == null) { // 연산자 저장
                     bfs.addLast(end);
-                    operations[end] = new Operation(SYMBOLS[i], start);
+                    operations[end] = new Operation(OPERATIONS[i], start);
                 }
                 if(end == b) { // B 도착
                     ArrayList<Character> trace = new ArrayList<>();

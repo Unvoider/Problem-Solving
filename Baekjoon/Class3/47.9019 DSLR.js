@@ -4,7 +4,7 @@ const input = require("fs").readFileSync(inputFile, "utf8").trim().split("\n");
 const MAX_NUM = 9999;
 const DIGIT_LIMIT = 10000;
 const BEGINNING = -1;
-const SYMBOLS = "DSLR";
+const OPERATIONS = "DSLR";
 
 let cursor = 1;
 const runRegister = (out) => {
@@ -28,7 +28,7 @@ const runRegister = (out) => {
             const end = ends[i];
             if(operations[end] == null) { // 연산자 저장
                 bfs.push(end);
-                operations[end] = [SYMBOLS[i], start];
+                operations[end] = [OPERATIONS[i], start];
             }
             if(end == b) { // B 도착
                 const trace = []
