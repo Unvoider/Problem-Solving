@@ -16,7 +16,8 @@ A_DSLR = [(
     (n * 10) % 10000 + n // 1000, #shift left + carry
     (n // 10) + (n % 10) * 1000 #shift right + carry * 1000
     ) for n in range(10000)]
-B_DSLR = [(n // 2,
+B_DSLR = [(
+    n // 2,
     (n + 10000) // 2,
     0 if n == 9999 else n + 1,
     (n // 10) + (n % 10) * 1000, #shift right + carry * 1000
