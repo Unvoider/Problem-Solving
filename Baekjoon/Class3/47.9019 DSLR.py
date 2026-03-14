@@ -39,15 +39,6 @@ def print_traces(meeting_point, a_operations, b_operations):
     
     write(f"{"".join(a_trace[::-1])}{"".join(b_trace)}\n")
 
-def find_meeting_point(start, ends, bfs, operations, other_operations):
-    for symbol, end in ends:
-        if operations[end] is None: #연산자 저장
-            bfs.append(end)
-            operations[end] = (symbol, start)
-        if other_operations[end] is not None: #반대편과 만남
-            return end
-    return None
-
 def run_register():
     a, b = map(int, input().split())
     if a == b:
@@ -63,26 +54,28 @@ def run_register():
 
     while True:
         for _ in range(len(a_bfs)): #한 레벨씩
-            #정방향 DSLR 연산 저장
             start = a_bfs.popleft()
-            ends = [(A_OPERATIONS[i], A_DSLR[start][i]) for i in range(4)]
-
             #정방향 탐색
-            meeting_point = find_meeting_point(start, ends, a_bfs, a_operations, b_operations)
-            if meeting_point is not None:
-                print_traces(meeting_point, a_operations, b_operations)
-                return
+            for i in range(4):
+                end = A_DSLR[start][i]
+                if a_operations[end] is None: #연산자 저장
+                    a_bfs.append(end)
+                    a_operations[end] = (A_OPERATIONS[i], start)
+                if b_operations[end] is not None: #반대편과 만남
+                    print_traces(end, a_operations, b_operations)
+                    return
 
         for _ in range(len(b_bfs)):
-            #역방향 DSLR 연산 저장
             start = b_bfs.popleft()
-            ends = [(B_OPERATIONS[i], B_DSLR[start][i]) for i in (range(0, 5) if start % 2 == 0 else range(2, 5))]
-
             #역방향 탐색
-            meeting_point = find_meeting_point(start, ends, b_bfs, b_operations, a_operations)
-            if meeting_point is not None:
-                print_traces(meeting_point, a_operations, b_operations)
-                return
+            for i in range(0 if start % 2 == 0 else 2, 5):
+                end = B_DSLR[start][i]
+                if b_operations[end] is None: #연산자 저장
+                    b_bfs.append(end)
+                    b_operations[end] = (B_OPERATIONS[i], start)
+                if a_operations[end] is not None: #반대편과 만남
+                    print_traces(end, a_operations, b_operations)
+                    return
 
 def main():
     t = int(input())
