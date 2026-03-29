@@ -51,15 +51,15 @@ const moves = Array.from({ length: n + 1 }, () => Array.from({ length: n + 1 }, 
 moves[1][2][0] = 1;
 
 for(let c = 3; c <= n; c++) // 첫 줄
-    if(walls[1][c] == EMPTY)
+    if(walls[1][c] === EMPTY)
         moves[1][c][0] = moves[1][c - 1][0]; // 가로 도착
 
 for(let r = 2; r <= n; r++)
     for(let c = 2; c <= n; c++)
-        if(walls[r][c] == EMPTY) {
+        if(walls[r][c] === EMPTY) {
             moves[r][c][0] = moves[r][c - 1][0] + moves[r][c - 1][2]; // 가로 도착
             moves[r][c][1] = moves[r - 1][c][1] + moves[r - 1][c][2]; // 세로 도착
-            if(walls[r - 1][c] == EMPTY && walls[r][c - 1] == EMPTY) // 대각선 도착
+            if(walls[r - 1][c] === EMPTY && walls[r][c - 1] === EMPTY) // 대각선 도착
                 moves[r][c][2] = moves[r - 1][c - 1][0] + moves[r - 1][c - 1][1] + moves[r - 1][c - 1][2];
         }
 
