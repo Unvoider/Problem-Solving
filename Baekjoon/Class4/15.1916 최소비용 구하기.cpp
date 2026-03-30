@@ -8,7 +8,7 @@ constexpr int DISTANCE_LIMIT = 100000000;
 struct Bus {
     int end, cost;
     Bus(int end, int cost) : end(end), cost(cost) {}
-    bool operator<(const Bus& other) const {
+    bool operator>(const Bus& other) const {
         return cost > other.cost;
     }
 };
@@ -18,7 +18,7 @@ vector<vector<Bus>> graph;
 int dijkstra(int begin, int finish) {
     int size = graph.size();
     vector<int> costs(size, DISTANCE_LIMIT); // begin에서부터 다른 노드로의 비용
-    priority_queue<Bus> pq; // 최소 힙
+    priority_queue<Bus, vector<Bus>, greater<Bus>> pq; // 최소 힙
 
     costs[begin] = 0; // 자기 자신에 대한 비용
     pq.emplace(begin, 0);
